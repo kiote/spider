@@ -6,5 +6,9 @@ class IndexController < ApplicationController
     creator = SpiderCreator.new('betoffer/1/1193')
     @content = creator.generate
 
+    respond_to do |format|
+      format.html # index.html.erb
+      format.xml  { render :xml => @content }
+    end
   end
 end
