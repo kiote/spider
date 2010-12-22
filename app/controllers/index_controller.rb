@@ -3,7 +3,7 @@ require 'open-uri'
 
 class IndexController < ApplicationController
   def index
-    creator = SpiderCreator.new('betoffer/1/1193')
+    creator = SpiderCreator.new('betoffer/1/1211')
     @content = creator.generate
 
     respond_to do |format|

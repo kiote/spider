@@ -16,10 +16,6 @@ class SpiderParser
     res
   end
 
-#  def parse_bets
-#    @content = part('/html/body/div/div/div/div/div/table/tr/td/table/tr/td/table[2]/tr/td[3]/a/strong');
-#  end
-
   def team
     competiotions = part('/html/body/div/div/div[3]/div/div/table/tr/td/table/tr/td[3]/table[2]/tr/td[2]/strong/a')
     @@competition_count = competiotions.count

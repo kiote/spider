@@ -2,7 +2,9 @@
 #   gem install sqlite3-ruby (not necessary on OS X Leopard)
 development:
   adapter: mysql
-  database: db/development.sqlite3
+  database: redmine
+  username: root
+  password: 123456
   pool: 5
   timeout: 5000
 
