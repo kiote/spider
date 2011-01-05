@@ -1,9 +1,9 @@
 services:
 -
   name: leon
+  class: SpiderCreator
   url: leonbets.ru
   get:
-    -
       - betoffer/1/1211
       - betoffer/1/1103
       - betoffer/1/922

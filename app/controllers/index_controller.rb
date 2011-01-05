@@ -8,30 +8,16 @@ class IndexController < ApplicationController
 
   def index
     params['name']
-#    links = %w(
-#      betoffer/1/1211
-#      betoffer/1/1103
-#      betoffer/1/922
-#      betoffer/1/1613
-#      betoffer/1/1645
-#      betoffer/1/916
-#      betoffer/1/3554
-#      betoffer/1/4636
-#      betoffer/1/2580
-#      betoffer/1/5174
-#      betoffer/1/5194
-#    )
-#    creator = SpiderCreator.new(links)
-#    @content = creator.generate
-#
-#    respond_to do |format|
-#      format.html
-#      format.xml  { render :xml => @content }
-#    end
-    services = @config['services'].each |service|
-      print service
+    @config['services'].each do |service|
+      class_name = service['class']
+      creator = eval(class_name).new(service['get'])
+      @content = creator.generate
     end
-    @content = @config['services']
+
+    respond_to do |format|
+      format.html
+      format.xml  { render :xml => @content }
+    end
   end
 
   def configure_app
