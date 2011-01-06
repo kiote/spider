@@ -1,5 +1,6 @@
 Spider::Application.routes.draw do
-  get "index/index"
+  match 'parse/:resource' => 'parse#index', 
+    :constraints => { :resource => /[A-Za-z]{3,18}/}
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

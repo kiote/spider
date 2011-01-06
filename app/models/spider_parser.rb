@@ -1,10 +1,13 @@
 require 'builder'
 class SpiderParser
-  URL = 'http://leonbets.ru/'
+
+  cattr_accessor :url
+  
   @@competition_count = 0
+  @@url = ''
 
   def initialize(section)
-    @doc = Nokogiri::HTML(open(URL + section))
+    @doc = Nokogiri::HTML(open(@@url + section))
   end
 
   def part(xpath)

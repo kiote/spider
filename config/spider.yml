@@ -2,7 +2,7 @@ services:
 -
   name: leon
   class: SpiderCreator
-  url: leonbets.ru
+  url: http://leonbets.ru/
   get:
       - betoffer/1/1211
       - betoffer/1/1103
@@ -15,3 +15,5 @@ services:
       - betoffer/1/2580
       - betoffer/1/5174
       - betoffer/1/5194
+-
+  name: marathon
