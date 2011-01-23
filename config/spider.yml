@@ -1,7 +1,7 @@
 services:
 -
   name: leon
-  class: SpiderCreator
+  class: LeonParser
   url: http://leonbets.ru/
   get:
       - betoffer/1/1211
@@ -17,3 +17,10 @@ services:
       - betoffer/1/5194
 -
   name: marathon
+  class: MarathonParser
+  url: https://marathonbet.com/
+  subdomain: odds
+  login: login
+  password: password
+  get:
+    - odds.phtml?h=0&sport=0&r=2_761615&r=2_761620&r=2_761616&r=2_761806&r=2_761701&r=2_761793&r=2_761642&r=2_761636&r=2_761687&r=2_761674&r=2_761742&r=2_761675&r=2_761623&r=2_761644&r=2_761622&r=2_761810&r=2_761693&r=2_761618&r=2_761612&r=2_761690&r=2_761641&r=2_761715&r=2_761660&r=2_761624&r=2_761696&r=2_761667&r=2_761741&r=2_761760&r=2_761804&r=2_761610&r=2_761709&r=2_761611&r=2_761666&r=2_761757&r=2_761807&r=2_761632&r=2_761668&r=2_761639&r=2_761803&r=2_761805&l=#761624

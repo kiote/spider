@@ -9,8 +9,8 @@ class ParseController < ApplicationController
   def index
     @config['services'].each do |service|
       next if service['name'] != params['resource']
-      class_name = service['class']
-      creator = eval(class_name).new(service['url'], service['get'])
+      parser = service['class']
+      creator = SpiderCreator.new(service['url'], service['get'], parser, service['subdomain'])
       @content = creator.generate
     end
 

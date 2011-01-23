@@ -1,16 +1,16 @@
 class SpiderCreator
-  def initialize(url, section)
-    @url = url
-    @section = section
+  def initialize(url, section, parser, subdomain)
+    @url, @section, @parser, @subdomain = url, section, parser, subdomain
   end
 
   def generate
     xml = XmlGenerator.new
     result = xml.to_s
-    SpiderParser.url = @url
+    eval(@parser).url = @url
+    eval(@parser).subdomain = @subdomain
 
     @section.each do |section|
-      spider = SpiderParser.new(section)
+      spider = eval(@parser).new(section)
 
       tournament = spider.tournament
 

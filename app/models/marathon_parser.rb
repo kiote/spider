@@ -1,19 +1,25 @@
 require 'builder'
-class SpiderParser
+require 'iconv'
+
+class MarathonParser
 
   cattr_accessor :url
+  cattr_accessor :subdomain
   
   @@competition_count = 0
   @@url = ''
 
   def initialize(section)
-    @doc = Nokogiri::HTML(open(@@url + section))
+#    converted = Iconv.iconv('utf-8', 'cp1251', login)
+    @doc = login.parser
   end
 
   def part(xpath)
     res = Array.new
     @doc.xpath(xpath).each do |link|
-      res << link.content if link.content.include? "-"
+      res << link.content
+
+      Rails.logger.info link.content
     end
     
     res
@@ -62,6 +68,23 @@ class SpiderParser
   end
 
   def tournament
-    part('/html/body/div/div/div[3]/div/div/table/tr/td/table/tr/td[3]/table/tr/td[2]/span')
+    # /html/body/div[3]/div/form/a/div
+    part('/html/body/div#container')
   end
+
+  protected
+
+    def login
+      a = Mechanize.new { |agent|
+        agent.user_agent_alias = 'Mac Safari'
+      }
+      a.get('https://www.marathonbet.com/login.phtml?check=1&rurl=http%3A%2F%2Fodds.marathonbet.com%2Fodds.phtml') do |page|
+        login_result = page.form_with(:action => 'https://www.marathonbet.com/login.phtml?check=1&rurl=http%3A%2F%2Fodds.marathonbet.com%2Fodds.phtml') do |f|
+          f.plog = '458206'
+          f.ppwd = '1234!56'
+        end.submit
+
+        login_result
+      end
+    end
 end

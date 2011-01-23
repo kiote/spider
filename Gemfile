@@ -20,6 +20,8 @@ gem 'nokogiri'
 gem 'builder'
 gem 'mysql', '2.8.1'
 gem 'ensure-encoding'
+gem 'mechanize'
+
 # gem 'sqlite3-ruby', :require => 'sqlite3'
 # gem 'aws-s3', :require => 'aws/s3'
 
